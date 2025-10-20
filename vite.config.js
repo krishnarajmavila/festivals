@@ -9,6 +9,10 @@ export default defineConfig({
   },
   preview: {
     host: '0.0.0.0',
-    port: process.env.PORT || 3000
+    port: process.env.PORT || 3000,
+    allowedHosts: [
+      'festivals-production.up.railway.app',
+      '.railway.app'
+    ]
   }
 })
