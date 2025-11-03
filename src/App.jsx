@@ -133,10 +133,20 @@ const HolidayPosterApp = () => {
           <p className="text-gray-500 text-sm">Create beautiful festival greetings</p>
         </div>
 
-        {/* Single 3D Diya Animation */}
-        <div className="flex-1 flex items-center justify-center">
-          <div className="text-9xl animate-diya">
-            🪔
+        {/* Golden Deer Animation */}
+        <div className="flex-1 flex flex-col items-center justify-center px-6">
+          <div className="text-9xl animate-diya mb-8">
+            🦌
+          </div>
+
+          {/* Story Paragraph */}
+          <div className="max-w-2xl text-center">
+            <h2 className="text-base font-semibold text-gray-800 mb-2">
+              THE GOLDEN DEER / NASHIK, MAHARASHTRA
+            </h2>
+            <p className="text-sm text-gray-600 leading-relaxed">
+              In the Ramayana, a golden deer enchants Sita, prompting Rama to pursue it, unaware it is the demon Maricha in disguise. The shining illusion symbolizes Maya, reminding us that not all that glitters brings joy. This episode is believed to have occurred in the forests of Panchavati, near the Godavari River in present-day Nashik, Maharashtra.
+            </p>
           </div>
         </div>
 
@@ -201,24 +211,27 @@ const HolidayPosterApp = () => {
         </div>
         
         <style>{`
-          @keyframes diyaAnimation {
+          @keyframes deerAnimation {
             0%, 100% {
-              transform: translateY(0px) rotateY(0deg) rotateX(0deg) scale(1);
+              transform: translateX(0px) translateY(0px) scale(1);
+              filter: drop-shadow(0 10px 30px rgba(255, 215, 0, 0.4)) brightness(1);
             }
             25% {
-              transform: translateY(-30px) rotateY(90deg) rotateX(10deg) scale(1.15);
+              transform: translateX(-20px) translateY(-15px) scale(1.05);
+              filter: drop-shadow(0 15px 40px rgba(255, 215, 0, 0.6)) brightness(1.2);
             }
             50% {
-              transform: translateY(-50px) rotateY(180deg) rotateX(20deg) scale(1.25);
+              transform: translateX(0px) translateY(-20px) scale(1.1);
+              filter: drop-shadow(0 20px 50px rgba(255, 215, 0, 0.8)) brightness(1.3);
             }
             75% {
-              transform: translateY(-30px) rotateY(270deg) rotateX(10deg) scale(1.15);
+              transform: translateX(20px) translateY(-15px) scale(1.05);
+              filter: drop-shadow(0 15px 40px rgba(255, 215, 0, 0.6)) brightness(1.2);
             }
           }
-          
+
           .animate-diya {
-            animation: diyaAnimation 8s ease-in-out infinite;
-            filter: drop-shadow(0 25px 50px rgba(0,0,0,0.3));
+            animation: deerAnimation 6s ease-in-out infinite;
             transform-style: preserve-3d;
           }
         `}</style>
