@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Share2, Download, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const HolidayPosterApp = () => {
@@ -8,6 +8,8 @@ const HolidayPosterApp = () => {
   const [currentMonth, setCurrentMonth] = useState(9);
   const [currentYear] = useState(2025);
   const posterRef = useRef(null);
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [showInstallPrompt, setShowInstallPrompt] = useState(false);
 
   const festivalsByMonth = {
     0: [
@@ -41,6 +43,39 @@ const HolidayPosterApp = () => {
 
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const daysOfWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+
+  // PWA Install Prompt Handler
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setShowInstallPrompt(true);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
+  }, []);
+
+  const handleInstallClick = async () => {
+    if (!deferredPrompt) return;
+
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+
+    if (outcome === 'accepted') {
+      console.log('User accepted the install prompt');
+    }
+
+    setDeferredPrompt(null);
+    setShowInstallPrompt(false);
+  };
+
+  const handleDismissInstall = () => {
+    setShowInstallPrompt(false);
+  };
 
   const getDaysInMonth = (month, year) => {
     return new Date(year, month + 1, 0).getDate();
@@ -235,6 +270,43 @@ const HolidayPosterApp = () => {
             transform-style: preserve-3d;
           }
         `}</style>
+
+        {/* Install Prompt */}
+        {showInstallPrompt && (
+          <div className="fixed bottom-6 left-6 right-6 bg-white rounded-2xl shadow-2xl border border-gray-200 p-5 z-50 animate-slideUp">
+            <button
+              onClick={handleDismissInstall}
+              className="absolute top-3 right-3 text-gray-400 hover:text-gray-600"
+            >
+              <X size={20} />
+            </button>
+            <div className="flex items-start gap-4">
+              <div className="text-4xl">📅</div>
+              <div className="flex-1">
+                <h3 className="text-lg font-semibold text-gray-800 mb-1 flex items-center gap-2">
+                  Install as Mobile App
+                </h3>
+                <p className="text-sm text-gray-600 mb-4">
+                  Add to your home screen for quick access to create beautiful festival posters anytime!
+                </p>
+                <div className="flex gap-2">
+                  <button
+                    onClick={handleInstallClick}
+                    className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-lg font-medium text-sm hover:from-orange-600 hover:to-red-600 transition-all"
+                  >
+                    Install App
+                  </button>
+                  <button
+                    onClick={handleDismissInstall}
+                    className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg font-medium text-sm hover:bg-gray-200 transition-all"
+                  >
+                    Maybe Later
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }

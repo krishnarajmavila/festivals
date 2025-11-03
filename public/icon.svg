@@ -1,0 +1,48 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Black Background -->
+  <rect width="512" height="512" fill="#000000" rx="80"/>
+
+  <!-- Calendar Icon -->
+  <g transform="translate(256, 256)">
+    <!-- Calendar Body -->
+    <rect x="-140" y="-140" width="280" height="280" rx="24" fill="white"/>
+
+    <!-- Calendar Header -->
+    <rect x="-140" y="-140" width="280" height="70" rx="24" fill="#DC2626"/>
+    <rect x="-140" y="-90" width="280" height="20" fill="#DC2626"/>
+
+    <!-- Binding Rings -->
+    <circle cx="-80" cy="-140" r="12" fill="white"/>
+    <circle cx="0" cy="-140" r="12" fill="white"/>
+    <circle cx="80" cy="-140" r="12" fill="white"/>
+
+    <!-- Date Grid (simplified) -->
+    <!-- Row 1 -->
+    <circle cx="-90" cy="-20" r="10" fill="#FCA5A5"/>
+    <circle cx="-45" cy="-20" r="10" fill="#FCA5A5"/>
+    <circle cx="0" cy="-20" r="10" fill="#FCA5A5"/>
+    <circle cx="45" cy="-20" r="10" fill="#FCA5A5"/>
+    <circle cx="90" cy="-20" r="10" fill="#FCA5A5"/>
+
+    <!-- Row 2 -->
+    <circle cx="-90" cy="25" r="10" fill="#FCA5A5"/>
+    <circle cx="-45" cy="25" r="10" fill="#FCA5A5"/>
+    <circle cx="0" cy="25" r="10" fill="#FCA5A5"/>
+    <circle cx="45" cy="25" r="10" fill="#FCA5A5"/>
+    <circle cx="90" cy="25" r="10" fill="#FCA5A5"/>
+
+    <!-- Row 3 - Highlighted Date -->
+    <circle cx="-90" cy="70" r="10" fill="#FCA5A5"/>
+    <circle cx="-45" cy="70" r="10" fill="#FCA5A5"/>
+    <circle cx="0" cy="70" r="18" fill="#DC2626"/>
+    <circle cx="45" cy="70" r="10" fill="#FCA5A5"/>
+    <circle cx="90" cy="70" r="10" fill="#FCA5A5"/>
+
+    <!-- Row 4 -->
+    <circle cx="-90" cy="115" r="10" fill="#FCA5A5"/>
+    <circle cx="-45" cy="115" r="10" fill="#FCA5A5"/>
+    <circle cx="0" cy="115" r="10" fill="#FCA5A5"/>
+    <circle cx="45" cy="115" r="10" fill="#FCA5A5"/>
+    <circle cx="90" cy="115" r="10" fill="#FCA5A5"/>
+  </g>
+</svg>
